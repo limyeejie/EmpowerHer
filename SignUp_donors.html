@@ -1,0 +1,200 @@
+<!-- Sign up at here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Sign Up</title>
+
+    <style>
+      .wrapper{
+        position: relative;
+        width: 400px;
+        height: 600px; /*because of this the empty area above*/
+        background: white;
+        border: 2px solid rgba(255, 255, 255, .5);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transform: scale(0);
+        transition: transform .5s ease, height .2s ease;
+      }
+      .wrapper .form-box{
+        width: 100%;
+        padding: 40px;
+      }
+      .wrapper .form-box.signUp{
+        position: absolute;
+        transition: none;
+        /* transform: translateX(400px); */
+      }
+      .form-box h2{
+        font-size: 2em;
+        color: #DE3F78;
+        text-align: center;
+      }
+      .input-box{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border-bottom: 2px solid #DE3F78;
+        margin: 20px 0;
+      }
+      .input-box label{
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        color: #DE3F78;
+        font-weight: 500;
+        pointer-events: none;
+        transition: .5s;
+      }
+      .input-box input:focus~label,
+      .input-box input:valid~label{
+        top: -5px;
+      }
+      .input-box input{
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        color: #DE3F78;
+        font-weight: 600;
+        padding: 0 35px 0 5px;
+      }
+      .input-box .icon{
+        position: absolute;
+        right: 8px;
+        font-size: 1.2em;
+        color: #DE3F78;
+        line-height: 57px;
+      }
+      .remember-forgot{
+        font-size: .9em;
+        color: #DE3F78;
+        font-weight: 500;
+        margin: -15px 0 15px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .remember-div{
+        font-size: 1em;
+        color: #DE3F78;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+      }
+      .remember-forgot label input{
+        accent-color: #DE3F78;
+        margin-right: 3px;
+      }
+      .remember-forgot a{
+        color: #DE3F78;
+        text-decoration: none;
+      }
+      .remember-forgot a:hover{
+        text-decoration: underline;
+      }
+      .btn{
+        width: 100%;
+        height: 45px;
+        background: #DE3F78;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        color: white;
+        font-weight: 500;
+      }
+      .login-signUp{
+        font-size: .9em;
+        color: black;
+        text-align: center;
+        font-weight: 500;
+        margin: 25px 0 10px;
+      }
+      .login-signUp p a{
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .login-signUp p a:hover{
+        text-decoration: underline;
+      }
+    </style>
+</head>
+<body style="margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh;">
+
+<div style="width: 500px; height: 630px; position: relative; background: white; border-radius: 8px; overflow: hidden">
+    <div class="wrapper" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <!-- Sign Up -->
+      <div class="form-box signUp">
+          <h2>Sign Up</h2>
+          <form action="#" id="form-signUp" onsubmit="return handleSignUp()">
+              <!-- Name -->
+              <div class="input-box">
+                  <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                  <input type="email" id="email_donors" required>
+                  <label>Email</label>
+              </div>
+
+              <!-- username -->
+              <div class="input-box">
+                  <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                  <input type="text" id="username_donors" required>
+                  <label>Username</label>
+              </div>
+
+              <!-- password -->
+              <div class="input-box">
+                  <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                  <input type="password" id="password_donors" required>
+                  <label>Password</label>
+              </div>
+
+
+              <div class="remember-forgot" style="display:flex;">
+                  <input type="checkbox" id="tnc" style="width:13px" required><label for="tnc">I agree to the terms & conditions</label>
+              </div>
+              <button type="submit" class="btn" id="signUp_donors">Sign Up as a Donor</button>
+              <div class="login-signUp">
+                <p>Need help? <a href="SignUp_donors.html" class="login-link"><br>Sign Up as a Sister</a></p>
+            </div>
+              <div class="login-signUp">
+                  <p>Already have an account? <a href="Login.html" class="login-link">Login</a></p>
+              </div>
+          </form>
+      </div>
+  </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="module" src="SignUp_donors.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>     
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+</body>
+</html>

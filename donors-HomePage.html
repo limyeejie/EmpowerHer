@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation Today!</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: rgb(248, 208, 214);
+        }
+
+        .post {
+            margin-bottom: 20px;
+        }
+
+        .post img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        /* Style for the delete button */
+        .delete-button {
+            margin-top: 10px;
+        }
+        /* Style for the view button */
+        .view-button {
+            margin-right: 5px;
+        }
+
+        .view-button {
+        margin-right: 5px;
+        background-color: #ff4081; /* Pink color */
+        border-color: #ff4081; /* Pink color */
+    }
+    .view-button:hover {
+        background-color: #e03878; /* Lighter pink color on hover */
+        border-color: #e03878; /* Lighter pink color on hover */
+    }
+    .view-button:onclick {
+        background-color: #e03878; /* Lighter pink color on hover */
+        border-color: #e03878; /* Lighter pink color on hover */
+    }
+
+        .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background: rgba(0, 0, 0, .5);
+}
+/* Navigation Styles */
+.navbar{
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 80px; */
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* z-index: 1000; */
+}
+nav a{
+    position: relative;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+    /* margin: 0 20px; */
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: peachpuff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+nav a:hover::after{
+    text-decoration: none;
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    /* align-items: center; */
+}
+.nav-links li{
+    margin: 0 10px;
+}
+.logo img{
+    max-height: 80px;
+    max-width: 80px;
+}
+.dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btnLogin {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    width: 130px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    /* margin-left: 40px; */
+    transition: .5s;
+}
+        
+    </style>
+</head>
+
+<body>
+    <br><br><br><br><br>
+    <!-- navigation bar -->
+    <div class="header">
+      <nav class="navbar">
+          <div class="logo"><img style="width: 690px; height: auto;" src="logo-image.png" alt=""></div>
+          <ul class="nav-links">
+              <li><a style="text-decoration: none; color: white;" href="donors-HomePage.html">Home</a></li>
+              <li><a style="text-decoration: none; color: white;" href="donors-PeriodTracker.html">Period Tracker</a></li>
+              <li><a style="text-decoration: none; color: white;" href="donors-Purchase.html">Purchase Pregnancy Test Kit</a></li>
+              <li><a style="text-decoration: none; color: white;" href="donors-ClinicLocator.html">Clinic Near Me</a></li>
+              <li>
+                  <div class="dropdown" style="font-size: 1.1em; text-decoration: none; color:white; font-weight: 500;  margin-left: 40px;">
+                      <span style="cursor: pointer;">Feminine Knowledge</span>
+                      <div class="dropdown-content">
+                        <a href="donors-FeminineKnowledge-FirstTime.html">First Time Having Period?</a>
+                        <a href="donors-FeminineKnowledge-Hygiene.html">How to Keep Hygiene?</a>
+                        <a href="donors-FeminineKnowledge-Types.html">Types of Sanitary Napkins</a>
+                        <a href="donors-FeminineKnowledge-STD.html">STD Check</a>
+                        <a href="donors-FeminineKnowledge-Men.html">I Am a Man</a>
+                      </div>
+                  </div>
+              </li>
+
+  
+             
+              
+          </ul>
+        
+      </nav>
+      
+      <a href="Splash-Screen.html" onclick="confirmLogout()">
+        <button class="btnLogin">Logout</button>
+    </a>
+        
+      <div class="toggle-btn">
+          <i class="fa fa-bars"></i>
+      </div>
+  </div>
+
+    <h1>Make a Donation Today!</h1>
+  
+
+    <div id="output" class="row"></div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPosts();
+        });
+
+        function postPhoto() {
+            const photoInput = document.getElementById('photoInput');
+            const nameInput = document.getElementById('nameInput');
+            const ageInput = document.getElementById('ageInput');
+            const addressInput = document.getElementById('addressInput');
+            const reasonInput = document.getElementById('reasonInput');
+
+            const photo = photoInput.files[0];
+            const name = nameInput.value;
+            const age = ageInput.value;
+            const address = addressInput.value;
+            const reason = reasonInput.value;
+
+            const postEntry = document.createElement('div');
+            postEntry.classList.add('col-md-4', 'post');
+
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = URL.createObjectURL(photo);
+            imgElement.alt = 'Uploaded Photo';
+            imgElement.classList.add('card-img-top', 'img-fluid');
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.classList.add('card-text');
+            descriptionElement.textContent = `Name: ${name}, Age: ${age}`;
+
+            // const deleteButton = document.createElement('button');
+            // deleteButton.classList.add('btn', 'btn-danger', 'delete-button');
+            // deleteButton.textContent = 'Delete';
+            // deleteButton.addEventListener('click', function () {
+            //     deletePost(postEntry);
+            // });
+
+            cardBody.appendChild(descriptionElement);
+            cardBody.appendChild(deleteButton);
+            card.appendChild(imgElement);
+            card.appendChild(cardBody);
+            postEntry.appendChild(card);
+
+            savePost({ imageSrc: imgElement.src, name, age, address, reason });
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.appendChild(postEntry);
+
+            photoInput.value = '';
+            nameInput.value = '';
+            ageInput.value = '';
+            addressInput.value = '';
+            reasonInput.value = '';
+        }
+
+        function savePost(post) {
+            const existingPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            existingPosts.push(post);
+            localStorage.setItem('posts', JSON.stringify(existingPosts));
+        }
+
+        function loadPosts() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const outputDiv = document.getElementById('output');
+
+            posts.forEach(post => {
+                const postEntry = document.createElement('div');
+                postEntry.classList.add('col-md-4', 'post');
+
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const imgElement = document.createElement('img');
+                imgElement.src = post.imageSrc;
+                imgElement.alt = 'Uploaded Photo';
+                imgElement.classList.add('card-img-top', 'img-fluid');
+
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card-body');
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.classList.add('card-text');
+                descriptionElement.textContent = `Name: ${post.name}, Age: ${post.age}`;
+
+                const viewButton = document.createElement('button');
+                viewButton.classList.add('btn', 'btn-primary', 'view-button');
+                viewButton.textContent = 'View Post';
+                viewButton.addEventListener('click', function () {
+                    viewPost(post);
+                });
+
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('btn', 'btn-danger', 'delete-button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', function () {
+                    deletePost(postEntry);
+                });
+
+                cardBody.appendChild(descriptionElement);
+                cardBody.appendChild(viewButton);
+                // cardBody.appendChild(deleteButton);
+                card.appendChild(imgElement);
+                card.appendChild(cardBody);
+                postEntry.appendChild(card);
+
+                outputDiv.appendChild(postEntry);
+            });
+        }
+
+        function deletePost(postEntry) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.removeChild(postEntry);
+
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const imageSrc = postEntry.querySelector('img').src;
+
+            const updatedPosts = posts.filter(post => post.imageSrc !== imageSrc);
+            localStorage.setItem('posts', JSON.stringify(updatedPosts));
+        }
+
+        function viewPost(post) {
+            window.location.href = `post.html?name=${encodeURIComponent(post.name)}&age=${encodeURIComponent(post.age)}&address=${encodeURIComponent(post.address)}&reason=${encodeURIComponent(post.reason)}&imageSrc=${encodeURIComponent(post.imageSrc)}`;
+        }
+    </script>
+
+</body>
+
+</html>

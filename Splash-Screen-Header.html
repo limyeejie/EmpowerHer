@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- <title>Menu</title> -->
+</head>
+<body>
+    <!-- navigation bar -->
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo"><img src="logo_circle.png" alt=""></div>
+            
+            <!-- <button class="btnLogin">Login/Sign up</button> -->
+        </nav>
+        
+        
+        <button class="btnLogin">Login/Sign up</button>
+        <div class="toggle-btn">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+    
+    <!-- Login/Sign up form -->
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="#" id="form-login">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot" style="justify-content: space-between;">
+                    <div class="remember-div">
+                        <input type="checkbox" id="remember" style="margin: 0;"><label for="remember" style="margin:0;">Remember me</label>
+                    </div>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn" id="login-submit">Login</button>
+                <div class="login-signUp">
+                    <p>Don't have an account? <a href="#" class="signUp-link">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box signUp">
+            <h2>Sign Up</h2>
+            <form action="#" id="form-signUp">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                    <input type="text" id="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="email2" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="password2" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot" style="display:flex;">
+                    <input type="checkbox" id="tnc" style="width:13px" required><label for="tnc">I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="btn" id="signup-submit">Sign Up</button>
+                <div class="login-signUp">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="Login-SignUp-Header.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>     
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

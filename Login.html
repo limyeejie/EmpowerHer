@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+</head>
+<body style="margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh;">
+
+<div style="width: 500px; height: 630px; position: relative; background: white; border-radius: 8px; overflow: hidden">
+    <div class="wrapper" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        
+      <div class="form-box login">
+          <!-- Login -->
+          <h2>Login</h2>
+          <form action="#" id="form-login" onsubmit="return handleLogin()">
+              <!-- email -->
+              <div class="input-box">
+                  <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                  <input type="text" id="email" required>
+                  <label>Email</label>
+              </div>
+
+              <!-- password -->
+              <div class="input-box">
+                  <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                  <input type="password" id="password" required>
+                  <label>Password</label>
+              </div>
+
+              <div style="width: 100%; display: flex; justify-content: space-around; margin-top: 20px; margin-bottom: 20px;">
+              </div>
+              <button type="submit" class="btn" id="login_donors">Login as a Donor</button><br><br>
+              <button type="submit" class="btn" id="login_sisters">Login as a Sister</button>
+
+              <div class="login-signUp">
+                  <p>Don't have an account? <a href="SignUp_sisters.html" class="signUp-link">Sign Up Now!</a></p> 
+              </div>
+
+          </form>
+      </div>
+  </div>
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="module" src="Login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>     
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

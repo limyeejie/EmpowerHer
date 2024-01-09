@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malaysian States</title>
+
+  <style>
+    body {
+  margin: 0;
+  height: 300vh;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  background-color: #FBC8D9 !important; /* Change the background color here */
+}
+
+  
+    label {
+      margin-bottom: 10px;
+      background-color: #FBC8D9 !important;
+    }
+  
+    select {
+      margin-bottom: 10px;
+      
+    }
+  
+    .states {
+      background-color: #FBC8D9 !important; /* Optional: add background color */
+      z-index: 1;
+      margin-top: 150px;
+    }
+  
+    .map-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px; /*1500px;/ /* Change the margin-top value */
+    }
+  
+    iframe {
+      display: none;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <div class="states">
+    <label for="stateSelect">Select a state:</label>
+    <select id="stateSelect" name="state" onchange="showMap()">
+      <option value="default" selected disabled>Select a state</option>
+      <option value="johor">Johor</option>
+      <option value="kedah">Kedah</option>
+      <option value="kelantan">Kelantan</option>
+      <option value="melaka">Melaka</option>
+      <option value="negeri_sembilan">Negeri Sembilan</option>
+      <option value="pahang">Pahang</option>
+      <option value="penang">Penang</option>
+      <option value="perak">Perak</option>
+      <option value="perlis">Perlis</option>
+      <option value="selangor">Selangor</option>
+      <option value="terengganu">Terengganu</option>
+      <option value="sabah">Sabah</option>
+      <option value="sarawak">Sarawak</option>
+      <option value="kuala_lumpur">Kuala Lumpur</option>
+      <option value="labuan">Labuan</option>
+      <option value="putrajaya">Putrajaya</option>
+    </select>
+  </div>
+
+  <div class="map-container" id="kedahHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Kulim Hospital</h2> 
+    <iframe id="kedahMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127120.88801961101!2d100.37879420632358!3d5.336084369106613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304acc7d854cafab%3A0xec95a06ede1692ba!2sKulim%20Hospital!5e0!3m2!1sen!2smy!4v1704285277136!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Kedah Medical Centre</h2>
+    <iframe id="kedahMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d508038.9696468232!2d100.03114550492167!3d5.847951299476088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b5b464d3b7595%3A0x802e78e1597d7111!2sKedah%20Medical%20Centre%20(KMC)!5e0!3m2!1sen!2smy!4v1704285780258!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>INS Specialist Centre Sdn Bhd, Alor Setar</h2>
+    <iframe id="kedahMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.038557880888!2d100.36203327398907!3d6.125513693861232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b44ba5cea2ff3%3A0x8bf059122fb9f1d8!2sINS%20Specialist%20Centre%20Sdn%20Bhd%2C%20Alor%20Setar!5e0!3m2!1sen!2smy!4v1704430219881!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Sultanah Bahiyah Hospital</h2>
+    <iframe id="kedahMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.865016786602!2d100.4037985739893!3d6.148824493838222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b5b49f51aaaab%3A0x9d1c566c4ca23a5b!2sHospital%20Sultanah%20Bahiyah%2C%20Alor%20Setar!5e0!3m2!1sen!2smy!4v1704430370221!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Sultan Abdul Halim Hospital</h2>
+    <iframe id="kedahMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.3086735495604!2d100.51374067398456!3d5.66843149431303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b299b05a1fb2f%3A0x84941661254bec74!2sHospital%20Sultan%20Abdul%20Halim%2C%20Sungai%20Petani!5e0!3m2!1sen!2smy!4v1704430417639!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="johorHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Regency Specialist Hospital</h2> 
+    <iframe id="johorMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4548360692793!2d103.8698481739601!3d1.4979540984879924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6ae121ebf557%3A0x24b40cee4b49f428!2sRegency%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704431654041!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KPJ Johor Specialist Hospital</h2>
+    <iframe id="johorMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4947990617948!2d103.73768747396005!3d1.475837498510298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da12b29763c093%3A0x4ab37eb45611759a!2sKPJ%20Johor%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704431804239!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Sultan Ismail Hospital</h2>
+    <iframe id="johorMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.363809233418!2d103.78746807396024!3d1.5471512984383855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6c242360fe61%3A0xbee9b4f720a6fc8!2sSultan%20Ismail%20Hospital!5e0!3m2!1sen!2smy!4v1704431878580!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KPJ Puteri Specialist Hospital</h2>
+    <iframe id="johorMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4681408600773!2d103.73950737396008!3d1.4906272984953786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da6d44be5b225f%3A0x4ced293c90c2fbda!2sKPJ%20Puteri%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704431985860!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Gleneagles Medini Hospital</h2>
+    <iframe id="johorMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.581638877211!2d103.63301627395988!3d1.4265966985599594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da0c76089c8ad1%3A0x3112ed4c64361833!2sGleneagles%20Hospital%20Medini%20Johor!5e0!3m2!1sen!2smy!4v1704432058032!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="kelantanHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Sultan Ismail Petra</h2> 
+    <iframe id="kelantanMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.4692618458553!2d102.221825773983!3d5.497111494482786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b67b4430071c3f%3A0xe6968dd10ba187a1!2sSultan%20Ismail%20Petra%20Hospital%2C%20Kuala%20Krai!5e0!3m2!1sen!2smy!4v1704433157598!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KPJ Perdana Specialist Hospital</h2>
+    <iframe id="kelantanMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1016649.6732361299!2d101.45663154160331!3d5.524249338655597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b6afdf9e5c7bb5%3A0xc4b1a416b3d1111f!2sKPJ%20Perdana%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704433307352!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Bachok Hospital</h2>
+    <iframe id="kelantanMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.9182708818453!2d102.35640187398785!3d6.005960493979238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b6bf6785f89cd1%3A0xc2970cc3a2533f3e!2sBachok%20Hospital!5e0!3m2!1sen!2smy!4v1704433397925!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Tengku Anis Hospital, Pasir Puteh</h2>
+    <iframe id="kelantanMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1016649.6732361299!2d101.45663154160331!3d5.524249338655597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b6939cb580c6ef%3A0xe983edf8a697ba62!2sTengku%20Anis%20Hospital%2C%20Pasir%20Puteh!5e0!3m2!1sen!2smy!4v1704433500523!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Kuala Krai Hospital</h2>
+    <iframe id="kelantanMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1016649.6732361299!2d101.45663154160331!3d5.524249338655597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b67c666cefa775%3A0x5c6984c99f70763!2sKuala%20Krai%20Hospital!5e0!3m2!1sen!2smy!4v1704433554921!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="melakaHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Melaka</h2> 
+    <iframe id="melakaMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31894.942354362516!2d102.23611438982778!3d2.2036243577159618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1efd13c8080ed%3A0x27e0cc2279cc745f!2sMelaka%20Hospital!5e0!3m2!1sen!2smy!4v1704433918422!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Jasin</h2>
+    <iframe id="melakaMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.590541585707!2d102.4270302739627!3d2.3048476976749726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e767a41e7a1b%3A0x6e2c9d24f4c7f471!2sJasin%20Hospital!5e0!3m2!1sen!2smy!4v1704434012546!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Alor Gajah</h2>
+    <iframe id="melakaMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.331844059463!2d102.19943097396299!3d2.395444197583803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1fd8527f7edfb%3A0xe51e69c9b77cbe37!2sAlor%20Gajah%20Hospital!5e0!3m2!1sen!2smy!4v1704434195921!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Mahkota</h2>
+    <iframe id="melakaMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.910985828273!2d102.24891392396214!3d2.1874339477931763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1ee1c3c8b70a7%3A0x29a3c738a3ea56d8!2sMahkota%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1704434308273!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Pantai Hospital Ayer Keroh</h2>
+    <iframe id="melakaMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31894.207037791843!2d102.25129331083984!3d2.2376889999999974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1e572c43f3e8b%3A0x81e09df4127e42e6!2sPantai%20Hospital%20Ayer%20Keroh!5e0!3m2!1sen!2smy!4v1704434434744!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="negeri_sembilanHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Women and Children Centre, Tuanku Ja'afar Hospital</h2> 
+    <iframe id="negeri_sembilanMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.3623913024903!2d101.93889308885497!3d2.7081369999999967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cde77aa8b9b1dd%3A0x1d8430269201159a!2sWomen%20and%20Children%20Centre%2C%20Tuanku%20Ja&#39;afar%20Hospital!5e0!3m2!1sen!2smy!4v1704436374400!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Tampin Hospital</h2>
+    <iframe id="negeri_sembilanMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.066998907442!2d102.23106887396332!3d2.484775997493905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ce04a1c1b30d6d%3A0x55c0f8806c2201a8!2sTampin%20Hospital!5e0!3m2!1sen!2smy!4v1704436517223!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Jelebu</h2>
+    <iframe id="negeri_sembilanMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.5299809674634!2d102.05650977396537!3d2.9503171970259063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdd6083c620a61%3A0x4d198318dcf8050f!2sJelebu%20Hospital!5e0!3m2!1sen!2smy!4v1704436600215!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Kuala Pilah</h2>
+    <iframe id="negeri_sembilanMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.2793555289513!2d102.22900997396437!3d2.733258197244021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ce7295576a0ffd%3A0xfc088cfeca32b6f1!2sTuanku%20Ampuan%20Najihah%20Hospital%2C%20Kuala%20Pilah!5e0!3m2!1sen!2smy!4v1704436678949!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Rembau</h2>
+    <iframe id="negeri_sembilanMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.7098904934414!2d102.07022957396383!3d2.600376797377646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ce082aaffd491f%3A0xce6a8c3c6e3717d6!2sRembau%20Hospital!5e0!3m2!1sen!2smy!4v1704436730148!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="pahangHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Sultan Haji Ahmad Shah</h2> 
+    <iframe id="pahangMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.574192009667!2d102.44850342396803!3d3.453185196521265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cec7773ad78f01%3A0xe7a5e471a11b96f5!2sSultan%20Haji%20Ahmad%20Shah%20Hospital%2C%20Temerloh!5e0!3m2!1sen!2smy!4v1704437265034!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Raub</h2>
+    <iframe id="pahangMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.000804759944!2d101.84885277397018!3d3.809905496163915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cbf0311fb345f3%3A0x7915a90a2200ebfe!2sRaub%20Hospital!5e0!3m2!1sen!2smy!4v1704437358584!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Cameron Highlands</h2>
+    <iframe id="pahangMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.6999035680374!2d101.38863397397469!3d4.466774195507517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ca5778b2a8a425%3A0x455a960931f81930!2sSultanah%20Hajjah%20Kalsom%20Hospital%2C%20Cameron%20Highlands!5e0!3m2!1sen!2smy!4v1704437415996!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Bentong</h2>
+    <iframe id="pahangMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.2688509211057!2d101.90286447396844!3d3.5252326964490406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc0569eecdcc7f%3A0xdf01c0ea600a15a6!2sBentong%20Hospital!5e0!3m2!1sen!2smy!4v1704437456996!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Aurelius Hospital Pahang</h2>
+    <iframe id="pahangMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1019291.8360312365!2d102.0597456171529!3d3.676175114362355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c8ba9b30fae627%3A0xb8e02398373050bf!2sAurelius%20Hospital%20Pahang%20(Formerly%20known%20as%20Pahang%20Medical%20Centre)!5e0!3m2!1sen!2smy!4v1704437577255!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="penangHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Gleneagles Hospital Penang</h2> 
+    <iframe id="penangMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.9353827733526!2d100.31546458885497!3d5.426787900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac3a67d318bdd%3A0xe54f46ee3c79f8fe!2sGleneagles%20Hospital%20Penang!5e0!3m2!1sen!2smy!4v1704437922146!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Island Hospital</h2>
+    <iframe id="penangMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.9665300718666!2d100.30928138885497!3d5.4220562999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac3afb9bfdbe1%3A0xba3e0b947e6c8e77!2sIsland%20Hospital!5e0!3m2!1sen!2smy!4v1704437973674!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Penang Adventist Hospital</h2>
+    <iframe id="penangMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.899698259069!2d100.30073428885498!3d5.432203700000011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac300188d441d%3A0x3326871df08d1250!2sPenang%20Adventist%20Hospital!5e0!3m2!1sen!2smy!4v1704438001840!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Bagan Specialist Centre</h2>
+    <iframe id="penangMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127100.79152349042!2d100.22090623423401!3d5.432198110091167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac44835828e31%3A0xea70b740930e0470!2sBagan%20Specialist%20Centre!5e0!3m2!1sen!2smy!4v1704438082524!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Sunway Medical Centre Penang</h2>
+    <iframe id="penangMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127100.79152349042!2d100.22090623423401!3d5.432198110091167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac5c412b61603%3A0xc4c9a5e5dfdd76e7!2sSunway%20Medical%20Centre%20Penang!5e0!3m2!1sen!2smy!4v1704438125633!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="perakHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Perak Community Specialist Hospital</h2> 
+    <iframe id="perakMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018057.9308332326!2d100.28417054817305!3d4.631734668011471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31caec6ef2bd4679%3A0xc9d698c5e1cef623!2sPerak%20Community%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704438641559!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Raja Permaisuri Bainun Hospital</h2>
+    <iframe id="perakMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018097.9800538882!2d99.936893446875!3d4.603829599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31caec8b8f49dcb3%3A0xcad988b70a4b8340!2sRaja%20Permaisuri%20Bainun%20Hospital!5e0!3m2!1sen!2smy!4v1704438914452!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Taiping</h2>
+    <iframe id="perakMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018097.9800538882!2d99.936893446875!3d4.603829599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31caaef5c5a50ceb%3A0x393e1cd9800d4d43!2sTaiping%20Hospital!5e0!3m2!1sen!2smy!4v1704438969213!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Pantai Hospital Ipoh</h2>
+    <iframe id="perakMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1018097.9800538882!2d99.936893446875!3d4.603829599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31caed01798f4553%3A0xe4404ab376af667f!2sPantai%20Hospital%20Ipoh!5e0!3m2!1sen!2smy!4v1704439021037!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Seri Manjung</h2>
+    <iframe id="perakMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31833.401318693846!2d100.62641121083982!3d4.185938699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cb2d0a2b5df3fb%3A0x8f5a3a28eb7756c9!2sSeri%20Manjung%20Hospital!5e0!3m2!1sen!2smy!4v1704439088041!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="perlisHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Tuanku Fauziah Hospital, Kangar</h2> 
+    <iframe id="perlisMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6308341858326!2d100.18867602399234!3d6.441428943549825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304c99bb11060d23%3A0x7d8dc70e3c26d6a1!2sTuanku%20Fauziah%20Hospital%2C%20Kangar!5e0!3m2!1sen!2smy!4v1704439329903!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KPJ PERLIS SPECIALIST HOSPITAL</h2>
+    <iframe id="perlisMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6950570412696!2d100.18194858885497!3d6.4332029000000155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304c999c1824b4e9%3A0x52b95b5090728ae6!2sKPJ%20PERLIS%20SPECIALIST%20HOSPITAL%20(HOSPITAL%20PAKAR%20KPJ%20PERLIS)!5e0!3m2!1sen!2smy!4v1704439562734!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Arau Health Clinic</h2>
+    <iframe id="perlisMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7012743545515!2d100.26795857399217!3d6.43240599355871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ca287e3b87e73%3A0x6edf2947efdbf2f0!2sArau%20Health%20Clinic!5e0!3m2!1sen!2smy!4v1704440226302!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Kuala Perlis Health Clinic</h2>
+    <iframe id="perlisMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.973266127292!2d100.1316331739918!3d6.3974465935931155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304c9b867ea3ef33%3A0x2be341ea37237b14!2sKuala%20Perlis%20Health%20Clinic!5e0!3m2!1sen!2smy!4v1704440280189!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Padang Besar Health Clinic</h2>
+    <iframe id="perlisMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.9122826470116!2d100.29152747399463!3d6.657793293337033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304cc08e01b0d817%3A0xb87ef605086648be!2sPadang%20Besar%20Health%20Clinic!5e0!3m2!1sen!2smy!4v1704440339664!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="selangorHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Sultan Abdul Aziz Shah, UPM</h2> 
+    <iframe id="selangorMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.4225840667114!2d101.71527807396554!3d2.9801311969959583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdca6e4b3dc34f%3A0x2c02a2c5c92a2bc4!2sHospital%20Sultan%20Abdul%20Aziz%20Shah%2C%20UPM!5e0!3m2!1sen!2smy!4v1704440612624!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Canselor Tuanku Muhriz UKM</h2>
+    <iframe id="selangorMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.982660809803!2d101.720895688855!3d3.099267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc35e90db3a4ad%3A0xaf6721771e83594a!2sHospital%20Canselor%20Tuanku%20Muhriz%20UKM!5e0!3m2!1sen!2smy!4v1704440725567!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Avisena Specialist Hospital</h2>
+    <iframe id="selangorMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127490.74436164025!2d101.37949764335937!3d3.0717605000000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc5281d0238069%3A0x82706da578345bce!2sAvisena%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704440823855!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Assunta</h2>
+    <iframe id="selangorMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127488.14524486252!2d101.50165644335938!3d3.093450500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc498e8f955555%3A0x76e61e62e50d6163!2sAssunta%20Hospital!5e0!3m2!1sen!2smy!4v1704440893946!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Thomson Hospital Kota Damansara</h2>
+    <iframe id="selangorMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127481.41453255215!2d101.43469224335934!3d3.148925600000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4efc8aa2795b%3A0xa65273c2847f8a19!2sThomson%20Hospital%20Kota%20Damansara!5e0!3m2!1sen!2smy!4v1704440937004!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="terengganuHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Sultanah Nur Zahirah</h2> 
+    <iframe id="terengganuMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.599527121694!2d103.14921487398159!3d5.324989294653508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7bfb426ef2e85%3A0x687526b9d5ee20ce!2sSultanah%20Nur%20Zahirah%20Hospital%2C%20Kuala%20Terengganu!5e0!3m2!1sen!2smy!4v1704441241316!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Kemaman</h2>
+    <iframe id="terengganuMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.936602285305!2d103.41848247397294!3d4.232612995741257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c886e4149e3d91%3A0x68e705585abd4367!2sKemaman%20Hospital!5e0!3m2!1sen!2smy!4v1704441297460!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Dungun</h2>
+    <iframe id="terengganuMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15904.31047525677!2d103.396587881439!3d4.756530023498021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c80f7ae94e8e77%3A0x7f8b5b173d2ecff3!2sDungun%20Hospital!5e0!3m2!1sen!2smy!4v1704441338816!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>SALAM Specialist Hospital Kuala Terengganu</h2>
+    <iframe id="terengganuMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4079911.5821877797!2d98.54947525701785!3d3.0168984128373477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7be7aa0cfb2d1%3A0x28c8d76d08bc3f48!2sSALAM%20Specialist%20Hospital%20Kuala%20Terengganu!5e0!3m2!1sen!2smy!4v1704441478283!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KMI Kuala Terengganu Medical Centre</h2>
+    <iframe id="terengganuMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4079911.5821877797!2d98.54947525701785!3d3.0168984128373477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7be0d5523799b%3A0x66d36d3734603774!2sKMI%20Kuala%20Terengganu%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1704441512695!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="sabahHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Queen Elizabeth Hospital</h2> 
+    <iframe id="sabahMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16325631.956284668!2d91.52234582996617!3d2.587653497703882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b69b162bae54f%3A0xd2ecb2b7d5e83f14!2sQueen%20Elizabeth%20Hospital%2C%20Kota%20Kinabalu!5e0!3m2!1sen!2smy!4v1704442653310!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Ranau Hospital</h2>
+    <iframe id="sabahMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.296972563322!2d116.66865507398735!3d5.953758494030817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b68efc5f2dd01%3A0xac358d655e8d1d1a!2sRanau%20Hospital!5e0!3m2!1sen!2smy!4v1704442742631!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Duchess of Kent, Sandakan</h2>
+    <iframe id="sabahMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31751.458662029436!2d118.05664319138951!3d5.865137723567636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3238db3102cbb7f3%3A0x473fba15fffc4b40!2sDuchess%20of%20Kent%20Hospital%2C%20Sandakan!5e0!3m2!1sen!2smy!4v1704442799384!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Tawau Hospital</h2>
+    <iframe id="sabahMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.8480038953726!2d117.87816797397312!3d4.249816795724068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32159e7de895776d%3A0x913a242feb250a92!2sTawau%20Hospital!5e0!3m2!1sen!2smy!4v1704442877104!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Sabah Women and Children Hospital</h2>
+    <iframe id="sabahMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2031544.8759907235!2d113.81237099374997!3d6.013803900000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b6b913f86d0c9%3A0x1bb979aede335f6b!2sSabah%20Women%20and%20Children%20Hospital!5e0!3m2!1sen!2smy!4v1704442938642!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="sarawakHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Umum Sarawak</h2> 
+    <iframe id="sarawakMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.370375868742!2d110.33627687396022!3d1.5436546984419082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba7859c696909%3A0x17af568b1d348182!2sHospital%20Umum%20Sarawak!5e0!3m2!1sen!2smy!4v1704443225195!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KPJ Kuching Specialist Hospital</h2>
+    <iframe id="sarawakMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7976.836800133271!2d110.36939377770996!3d1.5178380000000207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba71fdeb7870b%3A0xc97327e3140518da!2sKPJ%20Kuching%20Specialist%20Hospital!5e0!3m2!1sen!2smy!4v1704443328783!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Mukah</h2>
+    <iframe id="sarawakMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.705290242418!2d112.0738418739652!3d2.900992697075462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31f64d0ebc608fd1%3A0xd314a8a0acc903cd!2sMukah%20Hospital!5e0!3m2!1sen!2smy!4v1704443397255!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Hospital Miri</h2>
+    <iframe id="sarawakMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.1959505896584!2d113.99723747397391!3d4.3743536955997415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x321f48e1ba999395%3A0xa7857de3ea207758!2sMiri%20Hospital!5e0!3m2!1sen!2smy!4v1704443437799!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Daro Hospital</h2>
+    <iframe id="sarawakMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4081617.2735620616!2d106.79890908750002!3d2.5218077000000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31f7418151ca9b7b%3A0x535bdea8fdd40bb6!2sDaro%20Hospital!5e0!3m2!1sen!2smy!4v1704443569261!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="kuala_lumpurHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Universiti Malaya Medical Centre</h2> 
+    <iframe id="kuala_lumpurMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7967.830452264248!2d101.64673408716999!3d3.1171269374335324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4970ffffffff%3A0xd0f19f90565f0a35!2sUniversiti%20Malaya%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1704443869098!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Kuala Lumpur Hospital</h2>
+    <iframe id="kuala_lumpurMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.707404779039!2d101.69996717396656!3d3.1715360968037882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4818bac57b15%3A0x46fc8dd0d036613c!2sKuala%20Lumpur%20Hospital!5e0!3m2!1sen!2smy!4v1704443931916!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Tung Shin Hospital</h2>
+    <iframe id="kuala_lumpurMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.803571815105!2d101.70143687396637!3d3.146475696828939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49d42ad29b1d%3A0xcbbb8b9f09c732e6!2sTung%20Shin%20Hospital!5e0!3m2!1sen!2smy!4v1704443975961!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Pantai Hospital Kuala Lumpur</h2>
+    <iframe id="kuala_lumpurMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.904902569163!2d101.66409517396627!3d3.1198520968556753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49837785fdb3%3A0xe7587bba583f76a5!2sPantai%20Hospital%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1704444019263!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Prince Court Medical Centre</h2>
+    <iframe id="kuala_lumpurMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.794032785221!2d101.71915857396645!3d3.1489703968264307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3633aeca5d89%3A0xf27feb72728cf57!2sPrince%20Court%20Medical%20Centre!5e0!3m2!1sen!2smy!4v1704444062043!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="labuanHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Labuan Hospital</h2> 
+    <iframe id="labuanMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.6888800743045!2d115.22744287398136!3d5.311144994667244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x322319b1fc82250b%3A0xffc8a8b081350d0!2sLabuan%20Hospital!5e0!3m2!1sen!2smy!4v1704444356979!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Labuan Health Clinic</h2>
+    <iframe id="labuanMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63561.92438804742!2d115.19629375605605!3d5.321777946085179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32231893bbb3d137%3A0xb4f1cad6bca236aa!2sLabuan%20Health%20Clinic!5e0!3m2!1sen!2smy!4v1704444500996!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Klinik Wawasan Labuan</h2>
+    <iframe id="labuanMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63561.924670773806!2d115.19629366914518!3d5.321775210145566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x322318de3acf5095%3A0x28d812ee877eca80!2sKlinik%20Wawasan%20Labuan!5e0!3m2!1sen!2smy!4v1704444764961!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>KLINIK PARAGON LABUAN</h2>
+    <iframe id="labuanMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63561.924670773806!2d115.19629366914518!3d5.321775210145566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3223195d23b1c285%3A0x277fb6e0c8915041!2sKLINIK%20PARAGON%20LABUAN!5e0!3m2!1sen!2smy!4v1704444817037!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Klinik Suria (Labuan) Sdn. Bhd.</h2>
+    <iframe id="labuanMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63561.924670773806!2d115.19629366914518!3d5.321775210145566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32231854f61695bd%3A0x49c6b9b3ae84fe04!2sKlinik%20Suria%20(Labuan)%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1704444867373!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="map-container" id="putrajayaHospitals" style="display: none;">
+    <!-- hospital name -->
+    <h2>Hospital Putrajaya</h2> 
+    <iframe id="putrajayaMap1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.605920721882!2d101.67162067396531!3d2.9290528970472676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb644e849bab5%3A0x4535a9c1df4bb9a5!2sPutrajaya%20Hospital!5e0!3m2!1sen!2smy!4v1704445213035!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Azalea Women & Children Specialist Clinic Putrajaya</h2>
+    <iframe id="putrajayaMap2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.6200917291458!2d101.67716727396525!3d2.9250676970512735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb6488ef9ce03%3A0x512368341ba88493!2sAzalea%20Women%20%26%20Children%20Specialist%20Clinic%20Putrajaya%20(Klinik%20Pakar%20Wanita%20%26%20Kanak-Kanak%20Azalea)!5e0!3m2!1sen!2smy!4v1704445266706!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Putrajaya Presint 9 Health Clinic</h2>
+    <iframe id="putrajayaMap3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15938.247382571983!2d101.6581394554199!3d2.9414133000000033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb66ec2f7cc2b%3A0x629335ebbe4328d1!2sKlinik%20Kesihatan%20Putrajaya%20Presint%209!5e0!3m2!1sen!2smy!4v1704445343399!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>U.n.i KLINIK Putrajaya</h2>
+    <iframe id="putrajayaMap4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15937.911079665051!2d101.64912335541993!3d2.9648487000000268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb5c1ee96ad8d%3A0xdf401b7c8d60f8bc!2sU.n.i%20KLINIK%20Putrajaya!5e0!3m2!1sen!2smy!4v1704445454200!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>CARECLINICS POLIKLINIK CAHAYA</h2>
+    <iframe id="putrajayaMap5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15938.470334873853!2d101.66091995541987!3d2.9257734000000037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb648a842839b%3A0xa1c275a5cb6bbc8e!2sCARECLINICS%20POLIKLINIK%20CAHAYA%20(%20PUTRAJAYA%20)!5e0!3m2!1sen!2smy!4v1704445499194!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <script>
+    function showMap() {
+      var stateSelect = document.getElementById("stateSelect");
+      var kedahHospitals = document.getElementById("kedahHospitals");
+      var johorHospitals = document.getElementById("johorHospitals");
+      var kelantanHospitals = document.getElementById("kelantanHospitals");
+      var melakaHospitals = document.getElementById("melakaHospitals");
+      var negeri_sembilanHospitals = document.getElementById("negeri_sembilanHospitals");
+      var pahangHospitals = document.getElementById("pahangHospitals");
+      var penangHospitals = document.getElementById("penangHospitals");
+      var perakHospitals = document.getElementById("perakHospitals");
+      var perlisHospitals = document.getElementById("perlisHospitals");
+      var selangorHospitals = document.getElementById("selangorHospitals");
+      var terengganuHospitals = document.getElementById("terengganuHospitals");
+      var sabahHospitals = document.getElementById("sabahHospitals");
+      var sarawakHospitals = document.getElementById("sarawakHospitals");
+      var kuala_lumpurHospitals = document.getElementById("kuala_lumpurHospitals");
+      var labuanHospitals = document.getElementById("labuanHospitals");
+      var putrajayaHospitals = document.getElementById("putrajayaHospitals");
+
+      // Hide all iframes initially
+      hideAllMaps();
+
+      if (stateSelect.value === "kedah") {
+        kedahHospitals.style.display = "flex";
+        showKedahMaps(); // Call a function to show Kedah maps
+      } else {
+        kedahHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "johor") {
+        johorHospitals.style.display = "flex";
+        showJohorMaps(); // Call a function to show Johor maps
+      } else {
+        johorHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "kelantan") {
+        kelantanHospitals.style.display = "flex";
+        showKelantanMaps(); // Call a function to show Kelantan maps
+      } else {
+        kelantanHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "melaka") {
+        melakaHospitals.style.display = "flex";
+        showMelakaMaps(); // Call a function to show Melaka maps
+      } else {
+        melakaHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "negeri_sembilan") {
+        negeri_sembilanHospitals.style.display = "flex";
+        showNegeriSembilanMaps(); // Call a function to show Negeri Sembilan maps
+      } else {
+        negeri_sembilanHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "pahang") {
+        pahangHospitals.style.display = "flex";
+        showPahangMaps(); // Call a function to show Pahang maps
+      } else {
+        pahangHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "penang") {
+        penangHospitals.style.display = "flex";
+        showPenangMaps(); // Call a function to show Penang maps
+      } else {
+        penangHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "perak") {
+        perakHospitals.style.display = "flex";
+        showPerakMaps(); // Call a function to show Perak maps
+      } else {
+        perakHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "perlis") {
+        perlisHospitals.style.display = "flex";
+        showPerlisMaps(); // Call a function to show Perlis maps
+      } else {
+        perlisHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "selangor") {
+        selangorHospitals.style.display = "flex";
+        showSelangorMaps(); // Call a function to show Selangor maps
+      } else {
+        selangorHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "terengganu") {
+        terengganuHospitals.style.display = "flex";
+        showTerengganuMaps(); // Call a function to show Terengganu maps
+      } else {
+        terengganuHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "sabah") {
+        sabahHospitals.style.display = "flex";
+        showSabahMaps(); // Call a function to show Sabah maps
+      } else {
+        sabahHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "sarawak") {
+        sarawakHospitals.style.display = "flex";
+        showSarawakMaps(); // Call a function to show Sarawak maps
+      } else {
+        sarawakHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "kuala_lumpur") {
+        kuala_lumpurHospitals.style.display = "flex";
+        showKualaLumpurMaps(); // Call a function to show Kuala Lumpur maps
+      } else {
+        kuala_lumpurHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "labuan") {
+        labuanHospitals.style.display = "flex";
+        showLabuanMaps(); // Call a function to show Labuan maps
+      } else {
+        labuanHospitals.style.display = "none";
+      }
+
+      if (stateSelect.value === "putrajaya") {
+        putrajayaHospitals.style.display = "flex";
+        showPutrajayaMaps(); // Call a function to show Putrajaya maps
+      } else {
+        putrajayaHospitals.style.display = "none";
+      }
+    }
+
+    function hideAllMaps() {
+      var iframes = document.querySelectorAll('iframe');
+      for (var i = 0; i < iframes.length; i++) {
+        if (iframes[i].id !== "stateSelect") {
+          iframes[i].style.display = "none";
+        }
+      }
+    }
+
+    function showJohorMaps() {
+      // Set the display property of Johor maps to "block"
+      var johorMap1 = document.getElementById("johorMap1");
+      var johorMap2 = document.getElementById("johorMap2");
+      var johorMap3 = document.getElementById("johorMap3");
+      var johorMap4 = document.getElementById("johorMap4");
+      var johorMap5 = document.getElementById("johorMap5");
+
+      johorMap1.style.display = "block";
+      johorMap2.style.display = "block";
+      johorMap3.style.display = "block";
+      johorMap4.style.display = "block";
+      johorMap5.style.display = "block";
+    }
+
+    function showKedahMaps() {
+      // Set the display property of Kedah maps to "block"
+      var kedahMap1 = document.getElementById("kedahMap1");
+      var kedahMap2 = document.getElementById("kedahMap2");
+      var kedahMap3 = document.getElementById("kedahMap3");
+      var kedahMap4 = document.getElementById("kedahMap4");
+      var kedahMap5 = document.getElementById("kedahMap5");
+
+      kedahMap1.style.display = "block";
+      kedahMap2.style.display = "block";
+      kedahMap3.style.display = "block";
+      kedahMap4.style.display = "block";
+      kedahMap5.style.display = "block";
+    }
+
+    function showKelantanMaps() {
+      // Set the display property of Kelantan maps to "block"
+      var kelantanMap1 = document.getElementById("kelantanMap1");
+      var kelantanMap2 = document.getElementById("kelantanMap2");
+      var kelantanMap3 = document.getElementById("kelantanMap3");
+      var kelantanMap4 = document.getElementById("kelantanMap4");
+      var kelantanMap5 = document.getElementById("kelantanMap5");
+
+      kelantanMap1.style.display = "block";
+      kelantanMap2.style.display = "block";
+      kelantanMap3.style.display = "block";
+      kelantanMap4.style.display = "block";
+      kelantanMap5.style.display = "block";
+    }
+
+    function showMelakaMaps() {
+      // Set the display property of Melaka maps to "block"
+      var melakaMap1 = document.getElementById("melakaMap1");
+      var melakaMap2 = document.getElementById("melakaMap2");
+      var melakaMap3 = document.getElementById("melakaMap3");
+      var melakaMap4 = document.getElementById("melakaMap4");
+      var melakaMap5 = document.getElementById("melakaMap5");
+
+      melakaMap1.style.display = "block";
+      melakaMap2.style.display = "block";
+      melakaMap3.style.display = "block";
+      melakaMap4.style.display = "block";
+      melakaMap5.style.display = "block";
+    }
+
+    function showNegeriSembilanMaps() {
+      // Set the display property of Negeri Sembilan maps to "block"
+      var negeri_sembilanMap1 = document.getElementById("negeri_sembilanMap1");
+      var negeri_sembilanMap2 = document.getElementById("negeri_sembilanMap2");
+      var negeri_sembilanMap3 = document.getElementById("negeri_sembilanMap3");
+      var negeri_sembilanMap4 = document.getElementById("negeri_sembilanMap4");
+      var negeri_sembilanMap5 = document.getElementById("negeri_sembilanMap5");
+
+      negeri_sembilanMap1.style.display = "block";
+      negeri_sembilanMap2.style.display = "block";
+      negeri_sembilanMap3.style.display = "block";
+      negeri_sembilanMap4.style.display = "block";
+      negeri_sembilanMap5.style.display = "block";
+    }
+
+    function showPahangMaps() {
+      // Set the display property of Pahang maps to "block"
+      var pahangMap1 = document.getElementById("pahangMap1");
+      var pahangMap2 = document.getElementById("pahangMap2");
+      var pahangMap3 = document.getElementById("pahangMap3");
+      var pahangMap4 = document.getElementById("pahangMap4");
+      var pahangMap5 = document.getElementById("pahangMap5");
+
+      pahangMap1.style.display = "block";
+      pahangMap2.style.display = "block";
+      pahangMap3.style.display = "block";
+      pahangMap4.style.display = "block";
+      pahangMap5.style.display = "block";
+    }
+
+    function showPenangMaps() {
+      // Set the display property of Penang maps to "block"
+      var penangMap1 = document.getElementById("penangMap1");
+      var penangMap2 = document.getElementById("penangMap2");
+      var penangMap3 = document.getElementById("penangMap3");
+      var penangMap4 = document.getElementById("penangMap4");
+      var penangMap5 = document.getElementById("penangMap5");
+
+      penangMap1.style.display = "block";
+      penangMap2.style.display = "block";
+      penangMap3.style.display = "block";
+      penangMap4.style.display = "block";
+      penangMap5.style.display = "block";
+    }
+
+    function showPerakMaps() {
+      // Set the display property of Perak maps to "block"
+      var perakMap1 = document.getElementById("perakMap1");
+      var perakMap2 = document.getElementById("perakMap2");
+      var perakMap3 = document.getElementById("perakMap3");
+      var perakMap4 = document.getElementById("perakMap4");
+      var perakMap5 = document.getElementById("perakMap5");
+
+      perakMap1.style.display = "block";
+      perakMap2.style.display = "block";
+      perakMap3.style.display = "block";
+      perakMap4.style.display = "block";
+      perakMap5.style.display = "block";
+    }
+
+    function showPerlisMaps() {
+      // Set the display property of Perlis maps to "block"
+      var perlisMap1 = document.getElementById("perlisMap1");
+      var perlisMap2 = document.getElementById("perlisMap2");
+      var perlisMap3 = document.getElementById("perlisMap3");
+      var perlisMap4 = document.getElementById("perlisMap4");
+      var perlisMap5 = document.getElementById("perlisMap5");
+
+      perlisMap1.style.display = "block";
+      perlisMap2.style.display = "block";
+      perlisMap3.style.display = "block";
+      perlisMap4.style.display = "block";
+      perlisMap5.style.display = "block";
+    }
+
+    function showSelangorMaps() {
+      // Set the display property of Selangor maps to "block"
+      var selangorMap1 = document.getElementById("selangorMap1");
+      var selangorMap2 = document.getElementById("selangorMap2");
+      var selangorMap3 = document.getElementById("selangorMap3");
+      var selangorMap4 = document.getElementById("selangorMap4");
+      var selangorMap5 = document.getElementById("selangorMap5");
+
+      selangorMap1.style.display = "block";
+      selangorMap2.style.display = "block";
+      selangorMap3.style.display = "block";
+      selangorMap4.style.display = "block";
+      selangorMap5.style.display = "block";
+    }
+
+    function showTerengganuMaps() {
+      // Set the display property of Terengganu maps to "block"
+      var terengganuMap1 = document.getElementById("terengganuMap1");
+      var terengganuMap2 = document.getElementById("terengganuMap2");
+      var terengganuMap3 = document.getElementById("terengganuMap3");
+      var terengganuMap4 = document.getElementById("terengganuMap4");
+      var terengganuMap5 = document.getElementById("terengganuMap5");
+
+      terengganuMap1.style.display = "block";
+      terengganuMap2.style.display = "block";
+      terengganuMap3.style.display = "block";
+      terengganuMap4.style.display = "block";
+      terengganuMap5.style.display = "block";
+    }
+
+    function showSabahMaps() {
+      // Set the display property of Sabah maps to "block"
+      var sabahMap1 = document.getElementById("sabahMap1");
+      var sabahMap2 = document.getElementById("sabahMap2");
+      var sabahMap3 = document.getElementById("sabahMap3");
+      var sabahMap4 = document.getElementById("sabahMap4");
+      var sabahMap5 = document.getElementById("sabahMap5");
+
+      sabahMap1.style.display = "block";
+      sabahMap2.style.display = "block";
+      sabahMap3.style.display = "block";
+      sabahMap4.style.display = "block";
+      sabahMap5.style.display = "block";
+    }
+
+    function showSarawakMaps() {
+      // Set the display property of Sarawak maps to "block"
+      var sarawakMap1 = document.getElementById("sarawakMap1");
+      var sarawakMap2 = document.getElementById("sarawakMap2");
+      var sarawakMap3 = document.getElementById("sarawakMap3");
+      var sarawakMap4 = document.getElementById("sarawakMap4");
+      var sarawakMap5 = document.getElementById("sarawakMap5");
+
+      sarawakMap1.style.display = "block";
+      sarawakMap2.style.display = "block";
+      sarawakMap3.style.display = "block";
+      sarawakMap4.style.display = "block";
+      sarawakMap5.style.display = "block";
+    }
+
+    function showKualaLumpurMaps() {
+      // Set the display property of Kuala Lumpur maps to "block"
+      var kuala_lumpurMap1 = document.getElementById("kuala_lumpurMap1");
+      var kuala_lumpurMap2 = document.getElementById("kuala_lumpurMap2");
+      var kuala_lumpurMap3 = document.getElementById("kuala_lumpurMap3");
+      var kuala_lumpurMap4 = document.getElementById("kuala_lumpurMap4");
+      var kuala_lumpurMap5 = document.getElementById("kuala_lumpurMap5");
+
+      kuala_lumpurMap1.style.display = "block";
+      kuala_lumpurMap2.style.display = "block";
+      kuala_lumpurMap3.style.display = "block";
+      kuala_lumpurMap4.style.display = "block";
+      kuala_lumpurMap5.style.display = "block";
+    }
+
+    function showLabuanMaps() {
+      // Set the display property of Labuan maps to "block"
+      var labuanMap1 = document.getElementById("labuanMap1");
+      var labuanMap2 = document.getElementById("labuanMap2");
+      var labuanMap3 = document.getElementById("labuanMap3");
+      var labuanMap4 = document.getElementById("labuanMap4");
+      var labuanMap5 = document.getElementById("labuanMap5");
+
+      labuanMap1.style.display = "block";
+      labuanMap2.style.display = "block";
+      labuanMap3.style.display = "block";
+      labuanMap4.style.display = "block";
+      labuanMap5.style.display = "block";
+    }
+
+    function showPutrajayaMaps() {
+      // Set the display property of Putrajaya maps to "block"
+      var putrajayaMap1 = document.getElementById("putrajayaMap1");
+      var putrajayaMap2 = document.getElementById("putrajayaMap2");
+      var putrajayaMap3 = document.getElementById("putrajayaMap3");
+      var putrajayaMap4 = document.getElementById("putrajayaMap4");
+      var putrajayaMap5 = document.getElementById("putrajayaMap5");
+
+      putrajayaMap1.style.display = "block";
+      putrajayaMap2.style.display = "block";
+      putrajayaMap3.style.display = "block";
+      putrajayaMap4.style.display = "block";
+      putrajayaMap5.style.display = "block";
+    }
+  </script>   
+<script src="sister-Header.js"></script>
+</body>
+</html>

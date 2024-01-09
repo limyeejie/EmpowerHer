@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-pzjw8Y+4ovPElB9d9ccVJd8Hw1rP00ckIzPl3WSxO05PvUp3R+6UfA5/SN/b6S" crossorigin="anonymous">
+</head>
+<body style="margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="width: 500px; height: 600px; position: relative; background: rgb(255, 226, 231); border-radius: 8px; overflow: hidden">
+        <div style="width: 200px; height: 50px; left: 300px; top: 550px; position: absolute; background: #DE3F78"></div>
+        <div style="width: 400px; height: 30px; left: 50px; top: 90px; position: absolute; color: black; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Fill in your details to purchase a pregnancy test kit.</div>
+        <div style="width: 300px; height: 30px; left: 70px; top: 130px; position: absolute; color: black; font-size: 16px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Name</div>
+        <img style="width: 300px; height: 300px; left: 25px; top: -70px; position: absolute" src="logo-image.png" />
+        <div style="width: 150px; height: 40px; left: 220px; top: 60px; position: absolute; color: #DE3F78; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">EmpowerHer</div>
+
+        <!-- Name text box -->
+        <!-- Form validation -->
+        <div style="padding: 12px; left: 70px; top: 150px; position: absolute;">
+            <input type="text" id="name-purchase" style="width: 300px; height: 30px;" required><br />
+            <small id="nameError" style="color: brown; visibility: hidden;">Name required</small>
+        </div>
+
+        <!-- Phone number text box -->
+        <!-- Form validation -->
+        <div style="width: 400px; height: 60px; padding: 12px; left: 70px; top: 250px; position: absolute;">
+            <!-- <input type="text" id="phone-purchase" style="width: 300px; height: 30px;" required><br /> -->
+            <!-- this oninput make it only can key in numbers [0-9] -->
+            <input type="text" id="phone-purchase" style="width: 300px; height: 30px;" oninput="this.value = this.value.replace(/[^0-9]/g, '');"> <br />
+            <small id="phoneError" style="color: brown; visibility: hidden;">Phone required</small>
+        </div>
+
+        <div style="width: 300px; height: 30px; left: 70px; top: 230px; position: absolute; color: black; font-size: 16px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Phone</div>
+        <div style="width: 300px; height: 30px; left: 70px; top: 330px; position: absolute; color: black; font-size: 16px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Address</div>
+
+        <!-- Address text box -->
+        <!-- Form validation -->
+        <div style="width: 400px; height: 180px; padding: 12px; left: 70px; top: 350px; position: absolute;">
+            <input type="text" id="address-purchase" style="width: 300px; height: 120px;" required><br />
+            <small id="addressError" style="color: brown; visibility: hidden;">Address required</small>
+        </div>
+
+        <div style="width: 300px; height: 50px; left: 0; top: 550px; position: absolute; background: #FBB9B9"></div>
+
+        <!-- Place order button -->
+        <!-- Open overlay donors-ThankPurchase.html -->
+        <div id="placeOrderButton" style="width: 180px; height: 26px; left: 360px; top: 565px; position: absolute; color: white; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word; cursor: pointer;" onclick="validateForm()">
+            Place Order
+        </div>
+
+        <div style="width: 300px; height: 40px; left: 20px; top: 565px; position: absolute; color: black; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Total Payment: RM <span id="totalPayment"></span></div>
+    </div>
+
+    <!-- js for open overlay -->
+    <script>
+        // Function to open overlay (you may need to implement this part)
+        function openOverlay() {
+            // Implement the logic to show your overlay
+            // For example, you can add a CSS class to display it
+            // or use a third-party library for modals/overlays
+        }
+
+        //validation
+        function validateForm() {
+          var name = document.getElementById('name-purchase');
+          var phone = document.getElementById('phone-purchase');
+          var address = document.getElementById('address-purchase');
+
+          //Reset error message
+          document.getElementById('nameError').style.visibility = 'hidden';
+          document.getElementById('phoneError').style.visibility = 'hidden';
+          document.getElementById('addressError').style.visibility = 'hidden';
+
+          //Perform validation
+          if (name.value == "") {
+            document.getElementById('nameError').style.visibility = 'visible';
+            return false;
+          }
+          if (phone.value == "") {
+            document.getElementById('phoneError').style.visibility = 'visible';
+            return false;
+          }
+          if (address.value == "") {
+            document.getElementById('addressError').style.visibility = 'visible';
+            return false;
+          }
+          // If all validations pass, proceed with the order
+          openOverlay();
+          window.location.href = 'donors-ThankPurchase.html';
+        }
+
+        //to get the number of test kits purchased and calculate the total price
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        var totalPayment = getQueryParam('totalPayment');
+        var quantity = getQueryParam('quantity');
+
+        document.getElementById('totalPayment').innerText = totalPayment;
+    </script>
+</body>
+</html>

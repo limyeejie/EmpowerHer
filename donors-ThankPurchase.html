@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Purchasing Pregnancy Test Kit</title>
+</head>
+<body style="margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <div style="width: 500px; height: 300px; position: relative; background: #FBB9B9; border-radius: 8px; overflow: hidden">
+
+    <img style="width: 300px; height: 325px; left: 15px; top: -98.1px; position: absolute; border-radius: 78px" src="logo-image.png" />
+      <div style="width: 221px; height: 23.5px; left: 192px; top: 25px; position: absolute; color: #DE3F78; font-size: 32px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">EmpowerHer</div>
+      <div style="width: 183.5px; height: 58.1px; left: 180px; top: 81.1px; position: absolute; color: black; font-size: 32px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Thank you! </div>
+      <div style="width: 411.5px; height: 41.33px; left: 54px; top: 157px; position: absolute; text-align: center; color: black; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Your purchase for a pregnancy test kit is successful</div>
+
+      <!-- close button -->
+      <!-- redirect back to donors-Purchase.html -->
+      <button style="width: 105px; height: 41px; left: 210px; top: 221px; position: absolute; background: #DE3F78; border-radius: 8px; border: none;"></button><button id="ThankPurchaseBtn" style="width: 60px; height: 22px; left: 230px; top: 230px; position: absolute; background: none; border: none; color: white; font-size: 18px; font-family: Gideon Roman; font-weight: 400; word-wrap: break-word">Close</button>
+
+  </div>
+
+  <!-- js for overlay -->
+  <script>
+    // Function to open overlay (you may need to implement this part)
+    function openOverlay() {
+      // Implement the logic to show your overlay
+      // For example, you can add a CSS class to display it
+      // or use a third-party library for modals/overlays
+    }
+    // Add a click event listener to the div element
+    document.getElementById('ThankPurchaseBtn').addEventListener('click', function(event) {
+      // Open overlay (you may need to implement this part)
+      openOverlay();
+  
+      // Navigate to the "donors-Purchase.html" page
+      window.location.href = 'donors-Purchase.html';
+    });
+  </script>
+</body>
+</html>

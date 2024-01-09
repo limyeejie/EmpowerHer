@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <style>
+        
+
+        
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        
+    </style>
+    
+</head>
+<body>
+    <!-- navigation bar -->
+    <div class="header">
+        <nav class="navbar">
+            <div class="logo"><img src="logo-image.png" alt=""></div>
+            <ul class="nav-links">
+                <li><a style="text-decoration: none; color: white;" href="sisters-HomePage.html">Home</a></li>
+                <li><a style="text-decoration: none; color: white;" href="sisters-PeriodTracker.html">Period Tracker</a></li>
+                <li><a style="text-decoration: none; color: white;" href="sisters-Purchase.html">Purchase Pregnancy Test Kit</a></li>
+                <li><a style="text-decoration: none; color: white;" href="sisters-ClinicLocator.html">Clinic/Hospital Locator</a></li>
+                <li>
+                    <div class="dropdown" style="font-size: 1.1em; text-decoration: none; color:white; font-weight: 500;  margin-left: 40px;">
+                        <span style="cursor: pointer;">Feminine Knowledge</span>
+                        <div class="dropdown-content">
+                          <a href="sisters-FeminineKnowledge_FirstTime.html">First Time Having Period?</a>
+                          <a href="sisters-FeminineKnowledge-Hygiene.html">How to Keep Hygiene?</a>
+                          <a href="Sisters-FeminineKnowledge-Types.html">Types of Sanitary Napkins</a>
+                          <a href="sisters-FeminineKnowledge-STD.html">STD Check</a>
+                          <a href="sisters-FeminineKnowledge-Man.html">I Am a Man</a>
+                        </div>
+                </li>
+
+            </ul>
+          
+        </nav>
+        
+        <a href="Splash-Screen.html" onclick="confirmLogout()">
+            <button class="btnLogin">Logout</button>
+        </a>
+        <div class="toggle-btn">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+    <!-- Responsive dropdown menu, navbar -->
+    <div class="dropdown-menu">
+        <ul class="nav-links">
+            <li><a href="sisters-Home-SistersCommunity.html">Home</a></li>
+            <li><a href="#">Chat</a></li>
+            <li><a href="sisters-Purchase.html">Purchase Pregnancy Test Kit</a></li>
+            <li><a href="sisters-ClinicLocator.html">Clinic Near Me</a></li>
+            <li>
+                <div class="dropdown" style="font-size: 1.1em; text-decoration: none; color:white; font-weight: 500;  margin-left: 40px;">
+                    <span style="cursor: pointer;">Feminine Knowledge</span>
+                    <div class="dropdown-content">
+                      <a href="sisters-FeminineKnowledge_FirstTime.html">First Time Having Period?</a>
+                      <a href="sisters-FeminineKnowledge-Hygiene.html">How to Keep Hygiene?</a>
+                      <a href="Sisters-FeminineKnowledge-Types.html">Types of Sanitary Napkins</a>
+                      <a href="#">STD Check</a>
+                      <a href="sisters-FeminineKnowledge-Man.html">I Am a Man</a>
+                    </div>
+            </li>
+
+
+           
+            
+        </ul>
+    </div>
+    
+       
+   
+</body>
+</html>

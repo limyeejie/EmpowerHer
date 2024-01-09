@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
+    background-color: #fce4ec!important;
+    margin: 0!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    height: 100vh!important;
+}
+
+.container {
+    text-align: center!important;
+    background-color: #fff!important;
+    padding: 20px!important;
+    border-radius: 8px!important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)!important;
+}
+
+h1 {
+    color: #e91e63!important;
+}
+
+.form-container {
+    margin-top: 20px!important;
+}
+
+label {
+    display: block!important;
+    margin-bottom: 5px!important;
+    color: #e91e63!important;
+}
+
+input,
+textarea {
+    width: calc(100% - 16px)!important;
+    padding: 8px!important;
+    margin-bottom: 15px!important;
+    box-sizing: border-box!important;
+    border: 1px solid #e91e63!important;
+    border-radius: 4px!important;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #e91e63!important;
+    color: #fff!important;
+    border: none!important;
+    border-radius: 4px!important;
+    cursor: pointer!important;
+    margin: 0 5px!important;
+}
+
+button:hover {
+    background-color: #c2185b!important;
+}
+
+#result {
+    margin-top: 20px!important;
+    font-size: 18px!important;
+    color: #e91e63!important;
+}
+
+#records {
+    margin-top: 30px!important;
+}
+
+.record {
+    border: 1px solid #e91e63!important;
+    border-radius: 4px!important;
+    padding: 10px!important;
+    margin-bottom: 15px!important;
+    color: #e91e63!important;
+    position: relative!important;
+}
+
+.record p {
+    margin: 0!important;
+}
+
+.record button {
+    position: absolute!important;
+    top: 5px!important;
+    right: 5px!important;
+    background-color: #c2185b!important;
+    color: #fff!important;
+    border: none!important;
+    border-radius: 4px!important;
+    cursor: pointer!important;
+    padding: 5px 10px!important;
+}
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Period Tracker</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Period Tracker</h1>
+        <div class="form-container">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+            <label for="details">Details:</label>
+            <textarea id="details"></textarea>
+            <label for="cycle-length">Cycle Length (in days):</label>
+        <input type="number" id="cycle-length" min="1" value="28">
+            <button onclick="trackPeriod()">Track Period</button>
+        </div>
+        <div id="result"></div>
+        <div id="records"></div>
+        
+
+    </div>
+    <script>
+        let cycleLength = 28; // Default value
+
+document.addEventListener("DOMContentLoaded", function () {
+    displayRecords();
+});
+
+function trackPeriod() {
+    const startDateInput = document.getElementById('start-date');
+    const detailsInput = document.getElementById('details');
+    const resultContainer = document.getElementById('result');
+    const cycleLengthInput = document.getElementById('cycle-length');
+
+    cycleLength = parseInt(cycleLengthInput.value) || 28;
+
+    if (startDateInput.value === '' || new Date(startDateInput.value) > new Date()) {
+        resultContainer.innerText = 'Please enter a valid past start date.';
+    } else if (detailsInput.value === '') {
+        resultContainer.innerText = 'Please enter details.';
+    } else {
+        const startDate = new Date(startDateInput.value);
+        const expectedDate = new Date(startDate.getTime() + (cycleLength * 24 * 60 * 60 * 1000));
+
+        const record = {
+            startDate: startDateInput.value,
+            expectedDate: expectedDate.toISOString().split('T')[0],
+            details: detailsInput.value
+        };
+
+        // Save the record to local storage
+        saveRecord(record);
+
+        // Display the result and records
+        resultContainer.innerText = `Your next period is expected around ${record.expectedDate}.`;
+        displayRecords();
+    }
+}
+
+function saveRecord(record) {
+    let records = JSON.parse(localStorage.getItem('periodRecords')) || [];
+    records.push(record);
+    localStorage.setItem('periodRecords', JSON.stringify(records));
+}
+
+function displayRecords() {
+    const recordsContainer = document.getElementById('records');
+    recordsContainer.innerHTML = '<h2>Recorded Periods</h2>';
+
+    const records = JSON.parse(localStorage.getItem('periodRecords')) || [];
+
+    if (records.length === 0) {
+        recordsContainer.innerHTML += '<p>No records found.</p>';
+    } else {
+        records.forEach((record, index) => {
+            const recordDiv = document.createElement('div');
+            recordDiv.className = 'record';
+            if (isCurrentCycle(record.startDate, cycleLength)) {
+                recordDiv.classList.add('current-cycle');
+            }
+            recordDiv.innerHTML = `
+                <p><strong>Start Date:</strong> ${record.startDate}</p>
+                <p><strong>Expected Date:</strong> ${record.expectedDate}</p>
+                <p><strong>Details:</strong> ${record.details}</p>
+                <button onclick="editRecord(${index})">Edit</button>
+                <button onclick="deleteRecord(${index})">Delete</button>
+            `;
+            recordsContainer.appendChild(recordDiv);
+        });
+
+        
+    }
+}
+
+function isCurrentCycle(startDate, cycleLength) {
+    const today = new Date();
+    const start = new Date(startDate);
+    const end = new Date(start.getTime() + (cycleLength * 24 * 60 * 60 * 1000));
+    return today >= start && today <= end;
+}
+
+// function calculateAverageCycle(records) {
+//     if (records.length < 2) {
+//         return 'N/A';
+//     }
+
+//     let totalDays = 0;
+//     for (let i = 1; i < records.length; i++) {
+//         const currentDate = new Date(records[i].startDate);
+//         const previousDate = new Date(records[i - 1].startDate);
+//         const cycleLength = Math.round((currentDate - previousDate) / (24 * 60 * 60 * 1000));
+//         totalDays += cycleLength;
+//     }
+
+//     return Math.round(totalDays / (records.length - 1));
+// }
+
+function editRecord(index) {
+    let records = JSON.parse(localStorage.getItem('periodRecords')) || [];
+    const recordToEdit = records[index];
+
+    // Set the form values to the selected record
+    document.getElementById('start-date').value = recordToEdit.startDate;
+    document.getElementById('details').value = recordToEdit.details;
+
+    // Remove the selected record from the records array
+    records.splice(index, 1);
+
+    // Update local storage
+    localStorage.setItem('periodRecords', JSON.stringify(records));
+
+    // Display updated records
+    displayRecords();
+}
+
+function deleteRecord(index) {
+    let records = JSON.parse(localStorage.getItem('periodRecords')) || [];
+
+    // Remove the selected record from the records array
+    records.splice(index, 1);
+
+    // Update local storage
+    localStorage.setItem('periodRecords', JSON.stringify(records));
+
+    // Display updated records
+    displayRecords();
+}
+
+    </script>
+    <script src="sister-Header.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Post</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Custom style to align photo and description */
+        .card {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .card-img-top {
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            width: 50%;
+        }
+
+        button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    /* Style for Donate button */
+    button.donate {
+        background-color: #ff4081; /* Pink color */
+    }
+
+    /* Style for Back button */
+    button.back {
+        background-color: #ffffff; /* Pink color */
+        border: 2px solid #ff4081
+    }
+    </style>
+</head>
+
+<body>
+
+    <h1>View Post</h1>
+
+    <div class="container">
+        <div class="card">
+            <img id="postImage" class="card-img-top" alt="Uploaded Photo">
+            <div class="card-body">
+                <!-- <p id="postDescription" class="card-text"></p> -->
+                <p id="postName" class="card-text"></p>
+                <p id="postAge" class="card-text"></p>
+                <p id="postAddress" class="card-text"></p>
+                <p id="postReason" class="card-text"></p>
+                <hr>
+                <!-- Form for additional information -->
+                <form>
+                    <label for="amount">Choose Amount Of Donation:</label>
+                    <br>
+                    <input type="radio" id="amount25" name="amount" value="25">
+                    <label for="amount25">RM25</label>
+                    <br>
+                    <input type="radio" id="amount50" name="amount" value="50">
+                    <label for="amount50">RM50</label>
+                    <br>
+                    <input type="radio" id="amount100" name="amount" value="100">
+                    <label for="amount100">RM100</label>
+                    <br>
+                    
+                    <button type="button" class="back" onclick="goBack()" style="color: #ff4081;">Back</button>
+                    <button type="button" class="donate" onclick="donate()">Donate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            // const description = urlParams.get('description');
+            const imageSrc = urlParams.get('imageSrc');
+            const name = urlParams.get('name');
+            const age = urlParams.get('age');
+            const address = urlParams.get('address');
+            const reason = urlParams.get('reason');
+
+            document.getElementById('postImage').src = decodeURIComponent(imageSrc);
+            // document.getElementById('postDescription').textContent = `Description: ${decodeURIComponent(description)}`;
+            document.getElementById('postName').textContent = `Name: ${decodeURIComponent(name)}`;
+            document.getElementById('postAge').textContent = `Age: ${decodeURIComponent(age)}`;
+            document.getElementById('postAddress').textContent = `Address: ${decodeURIComponent(address)}`;
+            document.getElementById('postReason').textContent = `Reason: ${decodeURIComponent(reason)}`;
+        });
+
+        function donate() {
+            // Add donation logic here if needed
+            alert('Thank you for your donation!');
+            window.location.href = 'donors-HomePage.html';
+        }
+
+        function goBack() {
+            // Redirect to index2.html
+            window.location.href = 'donors-HomePage.html';
+        }
+    </script>
+
+</body>
+
+</html>
